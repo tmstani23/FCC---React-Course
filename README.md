@@ -1,2 +1,2 @@
 # FCC---React-Course
-An in-depth  React and JSS course delivered by FreeCodeCamp
+An in-depth  React and JSX course delivered by FreeCodeCamp
