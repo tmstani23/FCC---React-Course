@@ -66,5 +66,5 @@ ReactDOM.render(
     //<StatelessComponent />, //Components must be closed by self closing tags
     //<StateComponent />,
     <ParentComponent />,
-    document.getElementById('root')
+    document.getElementById('basic')
 );
