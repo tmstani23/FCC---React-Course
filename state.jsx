@@ -98,13 +98,43 @@ class ToggleComponent extends React.Component {
     }
 };
 
-
-
+//Example 5: Passing state as props:
+class StateApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Slim Shady'
+    }
+  }
+  render() {
+    return (
+       <div>
+         {/* Here the components name state is passed as props */}
+         <Navbar name = {this.state.name} />
+       </div>
+    );
+  }
+};
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+    <div>
+      {/* Here the name attribute is rendered.  Note this. must be used to refer to the parent
+      and not the current component props. */}
+      <h1>Hello, my name is: {this.props.name} </h1>
+    </div>
+    );
+  }
+};
 
 ReactDOM.render(
     //<StatefulComponent />,
     //<NameComponent />,
     //<UpdateComponent />,
-    <ToggleComponent />, 
+    //<ToggleComponent />,
+    <StateApp />, 
     document.getElementById("state-div")
 );
