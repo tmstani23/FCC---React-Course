@@ -118,6 +118,9 @@ class StateApp extends React.Component {
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      iconText: "A picture of the American Rapper."
+    }
   }
   render() {
     return (
@@ -125,10 +128,16 @@ class Navbar extends React.Component {
       {/* Here the name attribute is rendered.  Note this. must be used to refer to the parent
       and not the current component props. */}
       <h1>Hello, my name is: {this.props.name} </h1>
+      <IconComponent iconText = {this.state.iconText} />
     </div>
     );
   }
 };
+//Here the iconText state from the Navbar parent is returned in a paragraph
+const IconComponent = (props) => ( <p>{props.iconText}</p> )
+//this.props won't work in this instance since this component doesn't have its own state (stateless functional component)
+
+
 
 ReactDOM.render(
     //<StatefulComponent />,

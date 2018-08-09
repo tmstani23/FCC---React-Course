@@ -70,46 +70,102 @@ class ShoppingCart extends React.Component {
 };
 //Example 4: Rendering props in stateful child components using this.
 class ReturnTempPassword extends React.Component {
-    constructor(props) {
-      super(props);
-  
-    }
-    render() {
-      return (
-          <div>
-              { /* Here the props are called */ }
-              <p>Your temporary password is: <strong>{this.props.tempPassword}</strong></p>
-              { /* The props call happens in the parent component and this references there not here in the child */ }
-          </div>
-      );
-    }
+  constructor(props) {
+    super(props);
+
+  }
+  render() {
+    return (
+        <div>
+            { /* Here the props are called */ }
+            <p>Your temporary password is: <strong>{this.props.tempPassword}</strong></p>
+            { /* The props call happens in the parent component and this references there not here in the child */ }
+        </div>
+    );
+  }
 };
   
-  class ResetPassword extends React.Component {
-    constructor(props) {
-      super(props);
-  
-    }
-    render() {
-      return (
-          <div>
-            <h2>Reset Password</h2>
-            <h3>We've generated a new temporary password for you.</h3>
-            <h3>Please reset this password from your account settings ASAP.</h3>
-            { /* The ReturnTempPassword component is passed props to the stateful child component */ }
-            <ReturnTempPassword tempPassword = "myTempPass"/>
-            { /* When the props are rendered the props call comes from here*/ }
-          </div>
-      );
-    }
-  };
+class ResetPassword extends React.Component {
+  constructor(props) {
+    super(props);
 
+  }
+  render() {
+    return (
+      <div>
+        <h2>Reset Password</h2>
+        <h3>We've generated a new temporary password for you.</h3>
+        <h3>Please reset this password from your account settings ASAP.</h3>
+        { /* The ReturnTempPassword component is passed props to the stateful child component */ }
+        <ReturnTempPassword tempPassword = "myTempPass"/>
+        { /* When the props are rendered the props call comes from here*/ }
+      </div>
+    );
+  }
+};
+
+//Example 5: Pass a callback method as props to a child Component
+class MyApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ''
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({
+      inputValue: event.target.value
+    });
+  }
+  render() {
+    return (
+       <div>
+        { /* change code below this line */ }
+        <GetInput input = {this.state.inputValue} handleChange = {this.handleChange}/>
+        <RenderInput input = {this.state.inputValue}/>
+        { /* change code above this line */ }
+       </div>
+    );
+  }
+};
+
+class GetInput extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h3>Get Input:</h3>
+        <input
+          value={this.props.input}
+          onChange={this.props.handleChange}/>
+      </div>
+    );
+  }
+};
+
+class RenderInput extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h3>Input Render:</h3>
+        <p>{this.props.input}</p>
+      </div>
+    );
+  }
+};
 
 
 ReactDOM.render(
     //<Calendar />,
     //<ToDo />,
     //<ShoppingCart />,
-    <ResetPassword />,
+    //<ResetPassword />,
+    <MyApp />,
     document.getElementById('props-div')
 );
