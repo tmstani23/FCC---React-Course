@@ -136,12 +136,65 @@ class Dialog extends React.Component {
     }
 };
 
+//Example 5: Optimizing re-renders with componentShouldUpdate
+class OnlyEvens extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    //the component will only re-render if this component returns true
+    //The method can check next state/props to see if there are any changes or not.
+    //This allows for managing un-needed renders and makes the program more efficient
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('Should I update?');
+        // If nextProps is even return true
+        if(nextProps.value % 2 == 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        console.log('Receiving new props...');
+    }
+    componentDidUpdate() {
+        console.log('Component re-rendered.');
+    }
+    render() {
+        return <h1>{this.props.value}</h1>
+    }
+};
+  
+class NumberCruncher extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        value: 0
+        };
+        this.addValue = this.addValue.bind(this);
+    }
+    addValue() {
+        this.setState({
+        value: this.state.value + 1
+        });
+    }
+    render() {
+        return (
+        <div>
+            <button onClick={this.addValue}>Add</button>
+            <h3>Notification happens on even numbers...</h3>
+            <OnlyEvens value={this.state.value}/>
+        </div>
+        );
+    }
+};
 
 ReactDOM.render(
     //<WillMount />,
     //<DidMount />,
     //<EventComponent />,
-    <Controller />, 
+    //<Controller />,
+    <NumberCruncher />, 
     document.getElementById("life-div")
 ); 
 
