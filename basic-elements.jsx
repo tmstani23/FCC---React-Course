@@ -59,12 +59,23 @@ const ChildComponent = () => {
     }
   };
 
+//Inline style Example
+class Colorful extends React.Component {
+  render() {
+    return (
+      //inline styles must be set within an object
+      <div style = {{color: "red", fontSize: 72}}>Big Red</div>
+    );
+  }
+};
+  
 
 ReactDOM.render(
     //jsx,
     //selfClosingTag,
     //<StatelessComponent />, //Components must be closed by self closing tags
     //<StateComponent />,
-    <ParentComponent />,
+    //<ParentComponent />,
+    <Colorful />,
     document.getElementById('basic')
 );
