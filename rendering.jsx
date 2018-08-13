@@ -134,7 +134,6 @@ class Results extends React.Component {
     )
   };
 };
-
 class GameOfChance extends React.Component {
   constructor(props) {
     super(props);
@@ -162,10 +161,101 @@ class GameOfChance extends React.Component {
     );
   }
 };
+
+//Challenge 5: Rendering inline styles based on conditionals.
+class GateKeeper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({ input: event.target.value })
+  }
+  render() {
+    //Here the style object variable is declared:
+    let inputStyle = {
+      border: '1px solid black'
+    };
+    //If the user input text length is > 15:
+    this.state.input.length > 15 
+    //Set the inputStyle to a 3px red border
+    ? inputStyle = {border: '3px solid red'}
+    //Else keep it 1 px solid black
+    : inputStyle = {border: '1px solid black'}
+    return (
+      <div>
+        <h3>Don't Type Too Much:</h3>
+        <input
+          type="text"
+          //Here the input element's style is set to the declared inputStyle variable
+          style={inputStyle}
+          value={this.state.input}
+          onChange={this.handleChange} />
+      </div>
+    );
+  }
+};
+//Challenge 6: Using map to dynamically render user input
+const textAreaStyles = {
+  width: 235,
+  margin: 5
+};
+
+class MyToDoList extends React.Component {
+  constructor(props) {
+    super(props);
+    //The todolist is initialized as an empty array
+    this.state = {
+      userInput: "",
+      toDoList: []
+    }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleSubmit() {
+    //The user input is split at a comma and added as an individual item in the array
+    const itemsArray = this.state.userInput.split(',');
+    this.setState({
+      //The toDoList state is updated with the new array.
+      toDoList: itemsArray
+    });
+  }
+  handleChange(e) {
+    this.setState({
+      userInput: e.target.value
+    });
+  }
+  render() {
+    //Each of the elements from the toDoList array are mapped into the items constant as an li element with the item as text.
+    const items = this.state.toDoList.map(item => <li key={item}>{item}</li>) 
+    //key is a required unique identifier it is used by react to assign elements
+      //it is part of the react pre-compile process and is not rendered within the component instance or the DOM
+    return (
+      <div>
+        <textarea
+          onChange={this.handleChange}
+          value={this.state.userInput}
+          style={textAreaStyles}
+          placeholder="Separate Items With Commas" /><br />
+        <button onClick={this.handleSubmit}>Create List</button>
+        <h1>My "To Do" List:</h1>
+        <ul>
+          {/* The items are displayed within a ul element */}
+          {items}
+        </ul>
+      </div>
+    );
+  }
+};
 ReactDOM.render(
     //<DisplayToggle />,
     //<TestAnd />,
     //<CheckUserAge />,
-    <GameOfChance />,
+    //<GameOfChance />,
+    //<GateKeeper />,
+    <MyToDoList />,
     document.getElementById("render-div")
-)
+);
