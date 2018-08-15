@@ -308,7 +308,7 @@ class UsersComponent extends React.Component {
     //Map the new array of online users creating an li with the username for each user to a new array
     const renderOnline = usersOnline.map( user => <li key={user.username}>{user.username}</li>)
       return (
-       <div style={{color: "green", margin: 50}}>
+       <div className = "render-component">
          <h3>Current Online Users:</h3>
          <ul>
            {/* The final mapped array is rendered within a ul element */}

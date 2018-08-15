@@ -10,7 +10,12 @@ class WillMount extends React.Component {
         // change code above this line
     }
     render() {
-        return <div />
+        return (
+            <div> 
+                <p>Example 5 (see console): testing componentWillMount.  <br/>
+                componentWillMount is called before the render when a component is being mounted to the DOM</p>
+            </div>
+        )
     }
 };
 
@@ -30,11 +35,13 @@ class DidMount extends React.Component {
         this.setState({
             activeUsers: 1273
         });
-        }, 3500);
+        }, 10000);
     }
     render() {
         return (
         <div>
+            <p>Example 4 (see console): componentDidMount. Any updates to state within this method <br/>
+                will be automatically updated 10 seconds after the component mounts</p>
             <h3>Active Users: { this.state.activeUsers }</h3>
         </div>
         );
@@ -81,7 +88,8 @@ class EventComponent extends React.Component {
     render() {
         return (
         <div>
-            <h2>Press Enter Key!</h2>
+            <p>Example 3: Event Listeners with componentDidMount and componentWillUnmount</p>
+            <h3>Press Enter Key!</h3>
             <h3>{this.state.message}</h3>
         </div>
         );
@@ -108,15 +116,15 @@ class Dialog extends React.Component {
         console.log("Dialog Component has updated.")
     }
     render() {
-        return <h1>{this.props.message}</h1>
+        return <h3>{this.props.message}</h3>
     }
     };
-    //This component renders a message and updates the message state on button click.
-    class Controller extends React.Component {
+//This component renders a message and updates the message state on button click.
+class Controller extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-        message: 'First Message'
+            message: 'First Message'
         };
         this.changeMessage = this.changeMessage.bind(this);
     }
@@ -129,6 +137,7 @@ class Dialog extends React.Component {
     render() {
         return (
         <div>
+            <p>Example 2: This component renders a message and updates the message state on button click (see console).</p>
             <button onClick={this.changeMessage}>Update</button>
             <Dialog message={this.state.message}/>
         </div>
@@ -161,10 +170,14 @@ class OnlyEvens extends React.Component {
         console.log('Component re-rendered.');
     }
     render() {
-        return <h1>{this.props.value}</h1>
+        return (
+            <div>
+                <h3>Notification happens on even numbers...</h3>
+                <h3>{this.props.value}</h3>
+            </div>
+        )   
     }
-};
-  
+};  
 class NumberCruncher extends React.Component {
     constructor(props) {
         super(props);
@@ -180,10 +193,14 @@ class NumberCruncher extends React.Component {
     }
     render() {
         return (
-        <div>
+        <div className = "life-component">
+            <p>Example 1: Optimizing re-renders with componentShouldUpdate (see console)</p>
             <button onClick={this.addValue}>Add</button>
-            <h3>Notification happens on even numbers...</h3>
             <OnlyEvens value={this.state.value}/>
+            <Controller/>
+            <EventComponent/>
+            <DidMount/>
+            <WillMount/>
         </div>
         );
     }

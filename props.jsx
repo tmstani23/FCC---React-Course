@@ -37,8 +37,8 @@ class ToDo extends React.Component {
     render() {
         return (
         <div>
-            <h1>To Do Lists</h1>
-            <h2>Today</h2>
+            <h2>To Do Lists</h2>
+            <h3>Today</h3>
             { /* Here the arrays are passed as props */ }
             <List tasks = { ["run", "swim"] } />
             <h2>Tomorrow</h2>
@@ -51,7 +51,7 @@ class ToDo extends React.Component {
 };
 //Example 3: Default props
 const Items = (props) => {
-    return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+    return <p>Current Quantity of Items in Cart: {props.quantity}</p>
   }
 //Here the default props are set to the Itms component
 Items.defaultProps = {
@@ -93,9 +93,9 @@ class ResetPassword extends React.Component {
   render() {
     return (
       <div>
-        <h2>Reset Password</h2>
-        <h3>We've generated a new temporary password for you.</h3>
-        <h3>Please reset this password from your account settings ASAP.</h3>
+        <h3>Reset Password</h3>
+        <p>We've generated a new temporary password for you.</p>
+        <p>Please reset this password from your account settings ASAP.</p>
         { /* The ReturnTempPassword component is passed props to the stateful child component */ }
         <ReturnTempPassword tempPassword = "myTempPass"/>
         { /* When the props are rendered the props call comes from here*/ }
@@ -120,11 +120,15 @@ class MyApp extends React.Component {
   }
   render() {
     return (
-       <div>
+       <div className = "props-component">
         { /* change code below this line */ }
         <GetInput input = {this.state.inputValue} handleChange = {this.handleChange}/>
         <RenderInput input = {this.state.inputValue}/>
         { /* change code above this line */ }
+        <ResetPassword />
+        <ShoppingCart />
+        <ToDo />
+        <Calendar />
        </div>
     );
   }

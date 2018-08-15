@@ -8,7 +8,7 @@ const jsx = (
 //Self closing tags work when the tag contains no content:
 const selfClosingTag = (
     <div>
-      <h2>Welcome to React!</h2> <br />
+      <h3>Welcome to React!</h3> <br />
       <p>Be sure to close all tags!</p>
 
       {jsx}
@@ -70,7 +70,8 @@ class Colorful extends React.Component {
   render() {
     return (
       //inline styles must be set within an object
-      <div style = {{color: "red", fontSize: 16, margin: 50}}>Big Red
+      <div className = "basic-component">
+        <h3 style = {{color: "grey"}}>Inline Style Changed Text Color</h3>
         <ParentComponent />
       </div>
       

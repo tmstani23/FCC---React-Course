@@ -65,8 +65,8 @@ class TypesOfFood extends React.Component {
     }
     render() {
       return (
-        <div>
-          <h1>Types of Food:</h1>
+        <div className = "nesting-component">
+          <h3>Types of Food:</h3>
           { /* Fruits renders two non-stateless child components. */ }
           <Fruits />
           { /* Vegetables is also a non stateless component */ }

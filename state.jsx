@@ -12,7 +12,7 @@ class StatefulComponent extends React.Component {
     render() {
       return (
         <div>
-            {/* State  is called here and rendered as JSX h1 */}
+            {/* State  is called here and rendered as JSX h3 */}
             <h3>{this.state.name}</h3>
         </div>
       );
@@ -32,7 +32,7 @@ class NameComponent extends React.Component {
       const name = this.state.name;  
       return (
         <div>
-          { /* Here the name variable is returned as an h1 */ }
+          { /* Here the name variable is returned as an h3 */ }
             <h3>{name}</h3>
         </div>
       );
@@ -56,7 +56,7 @@ class UpdateComponent extends React.Component {
         <div>
           {/* The name variable is rendered. When the button is clicked the state is updated */}
           <button onClick={this.handleClick}>Click Me</button>
-          <h1>{this.state.name}</h1>
+          <h3>{this.state.name}</h3>
         </div>
       );
     }
@@ -84,14 +84,14 @@ class ToggleComponent extends React.Component {
         return (
           <div>
             <button onClick={this.toggleVisibility}>Click Me</button>
-            <h1>Now you see me!</h1>
+            <h3>Now you see me!</h3>
           </div>
         );
       } else {
         return (
           <div>
             <button onClick={this.toggleVisibility}>Click Me</button>
-            <h1>You don't see me!</h1>
+            <h3>You don't see me!</h3>
           </div>
         );
       }
@@ -108,9 +108,13 @@ class StateApp extends React.Component {
   }
   render() {
     return (
-       <div>
+       <div className = "state-component">
          {/* Here the components name state is passed as props */}
          <Navbar name = {this.state.name} />
+         <ToggleComponent />
+         <UpdateComponent />
+         <NameComponent />
+         <StatefulComponent />
        </div>
     );
   }
@@ -127,7 +131,7 @@ class Navbar extends React.Component {
     <div>
       {/* Here the name attribute is rendered.  Note this. must be used to refer to the parent
       and not the current component props. */}
-      <h1>Hello, my name is: {this.props.name} </h1>
+      <h3>Hello, my name is: {this.props.name} </h3>
       <IconComponent iconText = {this.state.iconText} />
     </div>
     );

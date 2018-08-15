@@ -1,0 +1,40 @@
+:root {
+    --dark-pink:#885159;
+    --purple:#645188;
+    --brown:#886451;
+    --teal:#528881;
+    --black:#000000;
+    --light-grey:#fdcb00;
+    --dark-grey:#414141;
+}
+body {
+    font-size: 16px;
+}
+.basic-component {
+    color: var(--dark-pink);
+    margin: 50px;
+}
+.nesting-component {
+    color: var(--purple);
+    margin: 50px;
+}
+.props-component {
+    color: var(--brown);
+    margin: 50px;
+}
+.state-component {
+    color: var(--teal);
+    margin: 50px;
+}
+.challenges-component {
+    color: var(--light-grey);
+    margin: 50px;
+}
+.life-component {
+    color: var(--black);
+    margin: 50px;
+}
+.render-component {
+    color: var(--dark-grey);
+    margin: 50px;
+}
