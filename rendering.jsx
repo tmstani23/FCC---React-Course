@@ -19,7 +19,7 @@ class DisplayToggle extends React.Component {
       return (
         <div>
           <button onClick={this.toggleDisplay}>Toggle Display</button>
-          <h1>Displayed!</h1>
+          <h3>UI Displayed!</h3>
         </div>
       );
     }
@@ -53,12 +53,16 @@ class TestAnd extends React.Component {
       this.state.display === true &&
       <div>
           <button onClick={this.toggleDisplay}>Toggle Display</button>
-          <h1>Displayed!</h1>
+          <h3>Displayed!</h3>
       </div> 
       ||
       this.state.display === false && 
       <div>
           <button onClick={this.toggleDisplay}>Toggle Display</button>
+      </div>
+      &&
+      <div>
+        <DisplayToggle />
       </div>
     )
   }
@@ -114,6 +118,7 @@ class CheckUserAge extends React.Component {
           //If the user age is less than 18 buttonThree is shown, else buttonTwo is shown.
           this.state.userAge == "" ? (buttonOne) : this.state.userAge < 18 ? (buttonThree) : (buttonTwo)
         }
+        <TestAnd />
       </div>
     );
   }
@@ -123,14 +128,22 @@ class Results extends React.Component {
   constructor(props) {
     super(props);
   }
+  //If the props counter state hasn't changed don't re-render this component
+  //This is so when the parent component renders from other updates this components state won't continue to trigger 
+  //Win/Loss text was being auto fired by updates to the input box in the parent component
+  shouldComponentUpdate(nextProps, nextState) {
+    // if the condition is true update else don't update
+    (nextProps.counterProps > this.props.counterProps) ? true : false
+  }
+  
   render() {
     return (
-      <h1>
+      <p>
       {
         //If the fiftyfifty expression from props is true generate win statement else loss statement
         this.props.fiftyFifty === true ? "You win!" : "You lose!"
       }
-      </h1>
+      </p>
     )
   };
 };
@@ -140,23 +153,26 @@ class GameOfChance extends React.Component {
     this.state = {
       counter: 1
     }
-    this.handleClick = this.handleClick.bind(this);
+    this.buttonClick = this.buttonClick.bind(this);
   }
-  handleClick() {
+  buttonClick() {
     this.setState({
       //the counter state is increased by one each time the play button is clicked
       counter: this.state.counter += 1
     });
   }
+
   render() {
     let expression = Math.random() < 0.5; //expression generates a random # between 0 and 1 and checks if it's less than 0.5
     return (
       <div>
-        <button onClick={this.handleClick}>Play Again</button>
+        <h3>The Game of Fifty/Fifty:</h3>
+        <button onClick={this.buttonClick}>Play Again</button>
         { /*Render the Results component and pass the expression as props*/ }
-        <Results fiftyFifty = {expression}/>
+        <Results fiftyFifty = {expression} counterProps = {this.state.counter}/>
         { /* Render a paragraph that displays the turn based on the state's counter attribute */ }
         <p>{'Turn: ' + this.state.counter}</p>
+        <CheckUserAge />
       </div>
     );
   }
@@ -194,6 +210,7 @@ class GateKeeper extends React.Component {
           style={inputStyle}
           value={this.state.input}
           onChange={this.handleChange} />
+          <GameOfChance />
       </div>
     );
   }
@@ -241,12 +258,64 @@ class MyToDoList extends React.Component {
           style={textAreaStyles}
           placeholder="Separate Items With Commas" /><br />
         <button onClick={this.handleSubmit}>Create List</button>
-        <h1>My "To Do" List:</h1>
+        <h3>My "To Do" List:</h3>
         <ul>
           {/* The items are displayed within a ul element */}
           {items}
         </ul>
+        <GateKeeper />
       </div>
+    );
+  }
+};
+
+//Challenge 7: Using filter to render only certain ui from an array
+class UsersComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [
+        {
+          username: 'Jeff',
+          online: true
+        },
+        {
+          username: 'Alan',
+          online: false
+        },
+        {
+          username: 'Mary',
+          online: true
+        },
+        {
+          username: 'Jim',
+          online: false
+        },
+        {
+          username: 'Sara',
+          online: true
+        },
+        {
+          username: 'Laura',
+          online: true
+        }
+      ]
+    }
+  }
+  render() {
+    //Return a new array that includes only objects with user status online === true
+    const usersOnline = this.state.users.filter( user => user.online ) 
+    //Map the new array of online users creating an li with the username for each user to a new array
+    const renderOnline = usersOnline.map( user => <li key={user.username}>{user.username}</li>)
+      return (
+       <div style={{color: "green", margin: 50}}>
+         <h3>Current Online Users:</h3>
+         <ul>
+           {/* The final mapped array is rendered within a ul element */}
+           {renderOnline}
+         </ul>
+         <MyToDoList />
+       </div>
     );
   }
 };
@@ -256,6 +325,7 @@ ReactDOM.render(
     //<CheckUserAge />,
     //<GameOfChance />,
     //<GateKeeper />,
-    <MyToDoList />,
+    //<MyToDoList />,
+    <UsersComponent />,
     document.getElementById("render-div")
 );

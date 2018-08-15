@@ -1,6 +1,8 @@
 //Constant vars can be JSX code and rendered use parenthesis:
 const jsx = (
-<h1>Hello JSX!</h1>
+  <div>
+    <h3>Hello JSX!</h3>
+  </div>
 );
 
 //Self closing tags work when the tag contains no content:
@@ -8,7 +10,8 @@ const selfClosingTag = (
     <div>
       <h2>Welcome to React!</h2> <br />
       <p>Be sure to close all tags!</p>
-      <hr />
+
+      {jsx}
     </div>
 );
 
@@ -17,6 +20,7 @@ const StatelessComponent = function() {
     return (
       <div> 
         This is a stateless functional component
+        {selfClosingTag}
       </div>
     )
 }
@@ -30,7 +34,8 @@ class StateComponent extends React.Component {
     render() {
       return (
         <div>
-        <h1>Hello React!</h1>
+        <h3>Hello React!</h3>
+        <StatelessComponent />
       </div>
       )
     }
@@ -41,6 +46,7 @@ const ChildComponent = () => {
     return (
       <div>
         <p>I am the child</p>
+        <StateComponent />
       </div>
     );
   };
@@ -52,7 +58,7 @@ const ChildComponent = () => {
     render() {
       return (
         <div>
-          <h1>I am the parent</h1>
+          <h3>I am the parent</h3>
           <ChildComponent />
         </div>
       );
@@ -64,7 +70,10 @@ class Colorful extends React.Component {
   render() {
     return (
       //inline styles must be set within an object
-      <div style = {{color: "red", fontSize: 72}}>Big Red</div>
+      <div style = {{color: "red", fontSize: 16, margin: 50}}>Big Red
+        <ParentComponent />
+      </div>
+      
     );
   }
 };
