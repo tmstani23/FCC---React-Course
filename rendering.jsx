@@ -1,4 +1,4 @@
-//Challenge 1
+//Challenge 1: Executing if/else Javascript logic within the render function
 class DisplayToggle extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +18,7 @@ class DisplayToggle extends React.Component {
     if(this.state.display === true) {
       return (
         <div>
+          <p>Challenge 7: Executing if/else Javascript logic within the render function.</p>
           <button onClick={this.toggleDisplay}>Toggle Display</button>
           <h3>UI Displayed!</h3>
         </div>
@@ -26,13 +27,14 @@ class DisplayToggle extends React.Component {
     else {
       return (
         <div>
+          <p>Challenge 7: Executing if/else Javascript logic within the render function.</p>
           <button onClick={this.toggleDisplay}>Toggle Display</button>
         </div>
       );
     } 
   }
 };
-//Challenge 2
+//Challenge 2: Using && and || operator within render to conditionally render different ui
 //This method displays different ui when a button is clicked
 class TestAnd extends React.Component {
   constructor(props) {
@@ -50,6 +52,8 @@ class TestAnd extends React.Component {
   render() {
     //js code conditions can be embedded within the return and render jsx using && or operators:
     return (
+      <p>Challenge 6: Using && and || operator within render to conditionally render different ui.</p>
+      &&
       this.state.display === true &&
       <div>
           <button onClick={this.toggleDisplay}>Toggle Display</button>
@@ -68,7 +72,7 @@ class TestAnd extends React.Component {
   }
 };
 
-//Challenge 3
+//Challenge 3: Using embedded ternary operators within JSX to render different ui.
 //Here some inline styles are defined as an object
 const inputStyle = {
   width: 235,
@@ -104,6 +108,7 @@ class CheckUserAge extends React.Component {
     const buttonThree = <button>You Shall Not Pass</button>;
     return (
       <div>
+        <p>Challenge 5: Using embedded ternary operators within JSX to render different ui.</p>
         <h3>Enter Your Age to Continue</h3>
         <input
           //The input element's style is set to the inputStyle variable
@@ -133,16 +138,16 @@ class Results extends React.Component {
   //Win/Loss text was being auto fired by updates to the input box in the parent component
   shouldComponentUpdate(nextProps, nextState) {
     // if the condition is true update else don't update
-    (nextProps.counterProps > this.props.counterProps) ? true : false
+    return (nextProps.counterProps > this.props.counterProps) ? true : false
   }
   
   render() {
     return (
       <p>
-      {
+        {
         //If the fiftyfifty expression from props is true generate win statement else loss statement
         this.props.fiftyFifty === true ? "You win!" : "You lose!"
-      }
+        }
       </p>
     )
   };
@@ -166,6 +171,7 @@ class GameOfChance extends React.Component {
     let expression = Math.random() < 0.5; //expression generates a random # between 0 and 1 and checks if it's less than 0.5
     return (
       <div>
+        <p>Challenge 4: Using props and conditionals to decide which ui to render.</p>
         <h3>The Game of Fifty/Fifty:</h3>
         <button onClick={this.buttonClick}>Play Again</button>
         { /*Render the Results component and pass the expression as props*/ }
@@ -203,6 +209,7 @@ class GateKeeper extends React.Component {
     : inputStyle = {border: '1px solid black'}
     return (
       <div>
+        <p>Challenge 3: Rendering inline styles based on conditionals.</p>
         <h3>Don't Type Too Much:</h3>
         <input
           type="text"
@@ -252,6 +259,7 @@ class MyToDoList extends React.Component {
       //it is part of the react pre-compile process and is not rendered within the component instance or the DOM
     return (
       <div>
+        <p>Challenge 2: Using map to dynamically render user input.</p>
         <textarea
           onChange={this.handleChange}
           value={this.state.userInput}
@@ -309,6 +317,7 @@ class UsersComponent extends React.Component {
     const renderOnline = usersOnline.map( user => <li key={user.username}>{user.username}</li>)
       return (
        <div className = "render-component">
+         <p>Challenge 1: Using filter to render only certain ui from an array.</p>
          <h3>Current Online Users:</h3>
          <ul>
            {/* The final mapped array is rendered within a ul element */}
