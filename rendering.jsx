@@ -5,9 +5,9 @@ class DisplayToggle extends React.Component {
     this.state = {
       display: true
     }
-    this.toggleDisplay = this.toggleDisplay.bind(this);
+    this.getDisplay = this.getDisplay.bind(this);
   }
-  toggleDisplay() {
+  getDisplay() {
     this.setState({
       display: !this.state.display //sets display state to false
     });
@@ -19,7 +19,7 @@ class DisplayToggle extends React.Component {
       return (
         <div>
           <p>Challenge 7: Executing if/else Javascript logic within the render function.</p>
-          <button onClick={this.toggleDisplay}>Toggle Display</button>
+          <button onClick={this.getDisplay}>Toggle Display</button>
           <h3>UI Displayed!</h3>
         </div>
       );
@@ -28,7 +28,7 @@ class DisplayToggle extends React.Component {
       return (
         <div>
           <p>Challenge 7: Executing if/else Javascript logic within the render function.</p>
-          <button onClick={this.toggleDisplay}>Toggle Display</button>
+          <button onClick={this.getDisplay}>Toggle Display</button>
         </div>
       );
     } 
@@ -52,21 +52,18 @@ class TestAnd extends React.Component {
   render() {
     //js code conditions can be embedded within the return and render jsx using && or operators:
     return (
-      <p>Challenge 6: Using && and || operator within render to conditionally render different ui.</p>
-      &&
       this.state.display === true &&
       <div>
-          <button onClick={this.toggleDisplay}>Toggle Display</button>
+          <p>Challenge 6: Using && and || operator within render to conditionally render different ui.</p>
+          <button onClick={this.toggleDisplay}>Click for UI</button>
           <h3>Displayed!</h3>
+          
       </div> 
       ||
       this.state.display === false && 
       <div>
-          <button onClick={this.toggleDisplay}>Toggle Display</button>
-      </div>
-      &&
-      <div>
-        <DisplayToggle />
+          <p>Challenge 6: Using && and || operator within render to conditionally render different ui.</p>
+          <button onClick={this.toggleDisplay}>Click for UI</button>
       </div>
     )
   }
@@ -124,6 +121,7 @@ class CheckUserAge extends React.Component {
           this.state.userAge == "" ? (buttonOne) : this.state.userAge < 18 ? (buttonThree) : (buttonTwo)
         }
         <TestAnd />
+        <DisplayToggle />
       </div>
     );
   }
@@ -317,24 +315,19 @@ class UsersComponent extends React.Component {
     const renderOnline = usersOnline.map( user => <li key={user.username}>{user.username}</li>)
       return (
        <div className = "render-component">
-         <p>Challenge 1: Using filter to render only certain ui from an array.</p>
-         <h3>Current Online Users:</h3>
-         <ul>
-           {/* The final mapped array is rendered within a ul element */}
-           {renderOnline}
-         </ul>
-         <MyToDoList />
+        <h1>Render Examples:</h1>
+        <p>Challenge 1: Using filter to render only certain ui from an array.</p>
+        <h3>Current Online Users:</h3>
+        <ul>
+          {/* The final mapped array is rendered within a ul element */}
+          {renderOnline}
+        </ul>
+        <MyToDoList />
        </div>
     );
   }
 };
 ReactDOM.render(
-    //<DisplayToggle />,
-    //<TestAnd />,
-    //<CheckUserAge />,
-    //<GameOfChance />,
-    //<GateKeeper />,
-    //<MyToDoList />,
     <UsersComponent />,
     document.getElementById("render-div")
 );

@@ -87,6 +87,7 @@ class BasicForm extends React.Component {
   render() {
     return (
       <div className = "challenges-component">
+        <h1>Challenges:</h1>
         <p>Challenge 1: A form is rendered that takes user input and saves it to state when the submit button is clicked
           Then the input text is rendered</p>
         { /* The onsubmit method is called when the user clicks the form submit button */ }

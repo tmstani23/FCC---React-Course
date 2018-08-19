@@ -194,6 +194,7 @@ class NumberCruncher extends React.Component {
     render() {
         return (
         <div className = "life-component">
+            <h1>Lifecycle Method Examples:</h1>
             <p>Example 1: Optimizing re-renders with componentShouldUpdate (see console)</p>
             <button onClick={this.addValue}>Add</button>
             <OnlyEvens value={this.state.value}/>
