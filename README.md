@@ -7,6 +7,11 @@ Each section represents a different file and its examples are marked in differen
 ## Notes on Use:
 Clone the repo and run the html file locally.
 
-To view each example, within a file, uncomment the component in the ReactDOM.render() method.
-Only one component can be rendered at a time.  Make sure the others are commented out.
+
+### Screenshots:
+![Alt text](https://raw.githubusercontent.com/tmstani23/FCC---React-Course/Development/screenshots/ss1.jpg)
+![Alt text](https://raw.githubusercontent.com/tmstani23/FCC---React-Course/Development/screenshots/ss2.jpg)
+![Alt text](https://raw.githubusercontent.com/tmstani23/FCC---React-Course/Development/screenshots/ss3.jpg)
+![Alt text](https://raw.githubusercontent.com/tmstani23/FCC---React-Course/Development/screenshots/ss4.jpg)
+![Alt text](https://raw.githubusercontent.com/tmstani23/FCC---React-Course/Development/screenshots/ss5.jpg)
 
