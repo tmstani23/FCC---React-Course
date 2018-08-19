@@ -1,40 +1,47 @@
 //Constant vars can be JSX code and rendered use parenthesis:
 const jsx = (
-<h1>Hello JSX!</h1>
+  <div>
+    <p><strong>Example 5 Returning JSX ui with a constant variable:</strong> </p>
+    <h3>Hello JSX!</h3>
+  </div>
 );
 
 //Self closing tags work when the tag contains no content:
 const selfClosingTag = (
     <div>
-      <h2>Welcome to React!</h2> <br />
+      <p><strong>Example 4 Self Closing tags:</strong> </p>
+      <h3>Welcome to React!</h3> <br />
       <p>Be sure to close all tags!</p>
-      <hr />
-    </div>
+      </div>
 );
 
 //Basic stateless component in React:
 const StatelessComponent = function() {
     return (
-      <div> 
+      <div>
+        <p><strong>Example 3 Basic Stateless Component:</strong> </p>
         This is a stateless functional component
+        
       </div>
     )
 }
 
 // Basic stateful React component
 class StateComponent extends React.Component {
-    //Should be initialized with constructor and super with props as arguments
-    constructor(props) {
-      super(props); //Super calls the React.component constructor to extend the prototype React component into StateComponent
-    }
-    render() {
-      return (
-        <div>
-        <h1>Hello React!</h1>
-      </div>
-      )
-    }
-  };
+  //Should be initialized with constructor and super with props as arguments
+  constructor(props) {
+    super(props); //Super calls the React.component constructor to extend the prototype React component into StateComponent
+  }
+  render() {
+    return (
+      <div>
+      <p><strong>Example 2 Basic Stateful Component:</strong> </p>
+      <h3>Hello React!</h3>
+      
+    </div>
+    )
+  }
+};
 
 //Parent child relationship between components:
 const ChildComponent = () => {
@@ -52,7 +59,8 @@ const ChildComponent = () => {
     render() {
       return (
         <div>
-          <h1>I am the parent</h1>
+          <p><strong>Example: Parent child relationship between components:</strong> </p>
+          <h3>I am the parent</h3>
           <ChildComponent />
         </div>
       );
@@ -63,19 +71,26 @@ const ChildComponent = () => {
 class Colorful extends React.Component {
   render() {
     return (
+      
       //inline styles must be set within an object
-      <div style = {{color: "red", fontSize: 72}}>Big Red</div>
+      <div className = "basic-component">
+        <h1>Basic Element Examples:</h1>
+        <p><strong>Example 1: Inline Styles:</strong></p>
+        <h3 style = {{color: "grey"}}>Inline Style Changed Text Color</h3>
+        <ParentComponent />
+        <StateComponent />
+        <StatelessComponent />
+        {selfClosingTag}
+        {jsx}
+  </div>
+      
     );
   }
 };
   
 
 ReactDOM.render(
-    //jsx,
-    //selfClosingTag,
-    //<StatelessComponent />, //Components must be closed by self closing tags
-    //<StateComponent />,
-    //<ParentComponent />,
     <Colorful />,
+    
     document.getElementById('basic')
 );

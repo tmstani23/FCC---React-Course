@@ -6,6 +6,9 @@
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
         <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
         <!-- Javascript/CSS files -->
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel = "stylesheet" type = "text/css" href = "styles.css" />
         <script src="basic-elements.jsx" type="text/babel"></script>
         <script src="nesting.jsx" type="text/babel"></script>
         <script src="props.jsx" type="text/babel"></script>
@@ -13,24 +16,44 @@
         <script src="challenges.jsx" type="text/babel"></script>
         <script src="life-cycle.jsx" type="text/babel"></script>
         <script src="rendering.jsx" type="text/babel"></script>
+        
         <!-- <link rel="stylesheet" type="text/css" href="main.css"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
 
     <body>
-        <h1>Basic Element Examples:</h1>
-        <div id="basic">Basic</div>
-        <h1>Nesting and Component Interaction Examples:</h1>
-        <div id="intermediate">Intermediate</div>
-        <h1>Props Usage Examples:</h1>
-        <div id="props-div">Props</div>
-        <h1>State Usage Examples:</h1>
-        <div id="state-div">State</div>
-        <h1>Challenges:</h1>
-        <div id="challenge-div">Challenges</div>
-        <h1>Lifecycle Methods:</h1>
-        <div id="life-div">Lifecycle</div>
-        <h1>Render Examples:</h1>
-        <div id="render-div">Render Examples</div>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div id="basic" class="col">Basic</div>
+                <div id="intermediate" class="col">Intermediate</div>
+            </div>
+            <div class="row justify-content-center">
+                <div id="props-div" class="col">Props</div>
+                <div id="state-div" class="col">State</div>
+            </div>
+            <div class="row justify-content-center">
+                <div id="challenge-div" class="col">Challenges</div>
+                <div id="life-div" class="col">Lifecycle</div>
+            </div>
+            <div class="row justify-content-center">
+                <div id="render-div" class="col-12">Render Examples</div>
+            </div>
+                
+
+
+
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
     </body>
 </html>

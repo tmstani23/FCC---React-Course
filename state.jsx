@@ -12,8 +12,9 @@ class StatefulComponent extends React.Component {
     render() {
       return (
         <div>
-            {/* State  is called here and rendered as JSX h1 */}
-            <h3>{this.state.name}</h3>
+          <p>Example 5: Basic stateful component</p>
+          {/* State  is called here and rendered as JSX h3 */}
+          <h3>{this.state.name}</h3>
         </div>
       );
     }
@@ -32,7 +33,8 @@ class NameComponent extends React.Component {
       const name = this.state.name;  
       return (
         <div>
-          { /* Here the name variable is returned as an h1 */ }
+          <p>Example 4: Using Javascript Within a Stateful Component's Render Method</p>
+          { /* Here the name variable is returned as an h3 */ }
             <h3>{name}</h3>
         </div>
       );
@@ -54,9 +56,10 @@ class UpdateComponent extends React.Component {
     render() {
       return (
         <div>
+          <p>Example 3: Updating state using setState</p>
           {/* The name variable is rendered. When the button is clicked the state is updated */}
           <button onClick={this.handleClick}>Click Me</button>
-          <h1>{this.state.name}</h1>
+          <h3>{this.state.name}</h3>
         </div>
       );
     }
@@ -83,15 +86,17 @@ class ToggleComponent extends React.Component {
       if (this.state.visibility) {
         return (
           <div>
+            <p>Example 2: Using State to Toggle an Element:</p>
             <button onClick={this.toggleVisibility}>Click Me</button>
-            <h1>Now you see me!</h1>
+            <h3>Now you see me!</h3>
           </div>
         );
       } else {
         return (
           <div>
+            <p>Example 2: Using State to Toggle an Element:</p>
             <button onClick={this.toggleVisibility}>Click Me</button>
-            <h1>You don't see me!</h1>
+            <h3>You don't see me!</h3>
           </div>
         );
       }
@@ -108,9 +113,13 @@ class StateApp extends React.Component {
   }
   render() {
     return (
-       <div>
+       <div className = "state-component">
          {/* Here the components name state is passed as props */}
          <Navbar name = {this.state.name} />
+         <ToggleComponent />
+         <UpdateComponent />
+         <NameComponent />
+         <StatefulComponent />
        </div>
     );
   }
@@ -125,9 +134,11 @@ class Navbar extends React.Component {
   render() {
     return (
     <div>
+      <h1>State Usage Examples:</h1>
+      <p>Example 1: Passing state as props:</p>
       {/* Here the name attribute is rendered.  Note this. must be used to refer to the parent
       and not the current component props. */}
-      <h1>Hello, my name is: {this.props.name} </h1>
+      <h3>Hello, my name is: {this.props.name} </h3>
       <IconComponent iconText = {this.state.iconText} />
     </div>
     );
@@ -140,10 +151,6 @@ const IconComponent = (props) => ( <p>{props.iconText}</p> )
 
 
 ReactDOM.render(
-    //<StatefulComponent />,
-    //<NameComponent />,
-    //<UpdateComponent />,
-    //<ToggleComponent />,
     <StateApp />, 
     document.getElementById("state-div")
 );

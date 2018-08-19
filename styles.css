@@ -1,0 +1,55 @@
+:root {
+    --dark-pink:#885159;
+    --purple:#645188;
+    --brown:#886451;
+    --teal:#528881;
+    --black:#000000;
+    --sunflower:#cea604;
+    --dark-grey:#414141;
+    --dark-red: #760000;
+}
+body {
+    font-size: 16px;
+}
+p > strong {
+    color: black;
+}
+div {
+    padding: 20px;
+}
+.basic-component {
+    color: var(--dark-pink);
+    margin: 50px;
+    border: 1px solid var(--dark-grey);
+}
+.nesting-component {
+    color: var(--purple);
+    margin: 50px;
+    border: 1px solid var(--dark-grey);
+}
+.props-component {
+    color: var(--brown);
+    margin: 50px;
+    border: 1px solid var(--dark-grey);
+}
+.state-component {
+    color: var(--teal);
+    margin: 50px;
+    border: 1px solid var(--dark-grey);
+}
+.challenges-component {
+    color: var(--sunflower);
+    margin: 50px;
+    border: 1px solid var(--dark-grey);
+}
+.life-component {
+    color: var(--black);
+    margin: 50px;
+    border: 1px solid var(--dark-grey);
+}
+.render-component {
+    color: var(--dark-grey);
+    margin: 50px;
+    border: 1px solid var(--dark-grey);
+    text-align: center;
+}

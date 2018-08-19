@@ -1,11 +1,10 @@
 //Example: Compose React Components
 //JSX elements, stateless functional components, and ES6 class components within other components can be rendered.
-
 //NonCitrus, Citrus and Vegetables return JSX ui to be rendered in a state component(Fruits, TyoesOfFood) 
 const NonCitrus = () => {
     return (
       <div>
-          <h3>Non Citrus:</h3>
+          <h4>Non Citrus(non-stateful GrandChild Component):</h4>
           <ul>
               <li>Apples</li>
               <li>Blueberries</li>
@@ -18,7 +17,7 @@ const NonCitrus = () => {
 const Citrus = () => {
     return (
         <div>
-            <h3>Citrus:</h3>
+            <h4>Citrus(non-stateful GrandChild Component):</h4>
             <ul>
                 <li>Lemon</li>
                 <li>Lime</li>
@@ -31,7 +30,7 @@ const Citrus = () => {
 const Vegetables = () => {
     return (
         <div>
-            <h2>Vegetables:</h2>
+            <h3>Vegetables(non-stateful Child Component):</h3>
             <ul>
                 <li>Lettuce</li>
                 <li>Tomatoes</li>
@@ -50,7 +49,7 @@ class Fruits extends React.Component {
     render() {
       return (
         <div>
-          <h2>Fruits:</h2>
+          <h3>Fruits(stateful) Child Component:</h3>
             <NonCitrus /> {/* Here NonCitrus and Citrus are nested child components of Fruits*/}
             <Citrus />
         </div>
@@ -65,12 +64,14 @@ class TypesOfFood extends React.Component {
     }
     render() {
       return (
-        <div>
-          <h1>Types of Food:</h1>
-          { /* Fruits renders two non-stateless child components. */ }
-          <Fruits />
-          { /* Vegetables is also a non stateless component */ }
-          <Vegetables />
+        <div className = "nesting-component">
+            <h1>Nesting and Component Interaction Examples:</h1>
+            <p>Example 1: Composing and nesting stateful and non-stateful components</p>
+            <h2>Types of Food(Parent Component):</h2>
+            { /* Fruits renders two non-stateless child components. */ }
+            <Fruits />
+            { /* Vegetables is also a non stateless component */ }
+            <Vegetables />
         </div>
       );
     }

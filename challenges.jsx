@@ -24,10 +24,11 @@ class Counter extends React.Component {
     render() {
       return (
         <div>
+          <p>Challenge 3: This Component increment/decrements a counter in the state when a button is clicked.</p>
           <button className='inc' onClick={this.increment}>Increment!</button>
           <button className='dec' onClick={this.decrement}>Decrement!</button>
           <button className='reset' onClick={this.reset}>Reset</button>
-          <h1>Current Count: {this.state.count}</h1>
+          <h3>Current Count: {this.state.count}</h3>
         </div>
       );
     }
@@ -50,6 +51,7 @@ class ControlledInput extends React.Component {
   render() {
     return (
       <div>
+        <p>Challenge 2: This component takes a user update and updates the state as the user types</p>
         { /* When the input value changes call the handle change component method */}
         <input onChange = {this.handleChange} value = {this.state.input} />
         { /* The input text value is set to the component's input state*/}
@@ -84,14 +86,19 @@ class BasicForm extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className = "challenges-component">
+        <h1>Challenges:</h1>
+        <p>Challenge 1: A form is rendered that takes user input and saves it to state when the submit button is clicked
+          Then the input text is rendered</p>
         { /* The onsubmit method is called when the user clicks the form submit button */ }
         <form onSubmit={this.handleSubmit}>
           <input onChange = {this.handleChange} value = {this.state.input}/>
           <button type='submit'>Submit!</button>
         </form>
-        { /* The component's submit text is rendered in an h1 */ }
-        <h1>{this.state.submit}</h1>
+        { /* The component's submit text is rendered in an h3 */ }
+        <h3>{this.state.submit}</h3>
+        <ControlledInput/>
+        <Counter/>
       </div>
     );
   }
